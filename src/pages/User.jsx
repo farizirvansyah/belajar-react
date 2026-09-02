@@ -1,6 +1,16 @@
 import { Table, Container, Badge, Card, Row, Col, Button } from "react-bootstrap";
+import UserModal from "../components/UserModal";
+import { useState } from "react";
 
 const User = () => {
+    const [show, setShow] = useState(false);
+    const handleCreate = () => {
+        setShow(true)
+    }
+    const handleCloseModal = () => {
+        setShow(false)
+    }
+    console.log(show);
     return (
         <Container className="py-4">
             <Card className="shadow-sm border-0">
@@ -11,28 +21,33 @@ const User = () => {
                             <p className="text-muted mb-0">Data User Management</p>
                         </Col>
                         <Col xs="auto">
-                            <Button variant="primary">+ Create New User</Button>
+                            <Button variant="primary" onClick={handleCreate}>+ Create New User</Button>
                         </Col>
                     </Row>
 
                     <Table responsive hover bordered className="align-middle">
                         <thead className="table-light">
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </Table>
                 </Card.Body>
             </Card>
+            <UserModal show={show} handleClose={handleCloseModal} />
         </Container>
     )
 }
